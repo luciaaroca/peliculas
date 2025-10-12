@@ -45,3 +45,25 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
+
+/*MI CSS*/
+header{
+	background-color: grey;
+	padding: 20px;
+}
+main{
+	padding: 20px;
+}
+#nuevaPeli{
+	background-color: beige;
+}
+#tabla{
+	background-color: darkkhaki;
+}
+#tablaPelis{
+	background-color: pink;
+}
+img{
+	width: 100px;
+}
