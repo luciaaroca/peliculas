@@ -40,6 +40,18 @@
            <button type="submit">Añade tu peli</button>
          </form>
      </section>
+      <section id="filtro">
+            <h2>Filtro por título de la peli</h2>
+            <div>
+                <label for="titulo-filter">Titulo:</label>
+                <input type="text" id="titulo-filter" placeholder="Buscamos tu peli" required>
+                <button id="titulo-search-button">Search</button>
+                <button id="titulo-clear-button">Clear</button>
+            </div>
+            <section id="filtered-peli">
+                <!-- Filtered peli will be displayed here -->
+            </section>
+        </section>
      <section id ="tabla"></section>
   </main>
 <script  type="module"  src="./js/script.js"></script>

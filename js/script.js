@@ -1,4 +1,5 @@
-const peliculas = []; //creamos un array vacío donde se almacenaran todas las peliculas
+import peliculas from "./peliculas.js"
+
 const formulario = document.getElementById("formPeli"); //seleccionamos el id = "formPeli"
 const tabla = document.getElementById("tabla"); //seleccionamos el id = "tabla" (es una nueva sección)
 
@@ -53,13 +54,14 @@ formulario.addEventListener("submit", function(event){ //escuchamos un evento (s
 function actualizarTabla (){ 
   //creamos la tabla con un let ya que no va a ser una variable constante
   //primero con template strings creamos la cabecera de la tabla, lo que solo se actualiza una vez
-let tablaPelis = `
+  let tablaPelis = `
 <h2> TABLA DE NUESTRAS PELIS</h2>
     <table id="tablaPelis">
       <thead>
         <tr>
           <th>Título</th>
           <th>Año</th>
+          <th>Descripción</th>
           <th>Imagen</th> 
           <th> Genero</th>
         </tr>
@@ -68,17 +70,85 @@ let tablaPelis = `
         `;
         //creamos otra función, esta vez la parte actualizable
         //para cada pelicula (objeto) le añadimos a nuestra tablaPelis anterior, el body con los valores actualizablez
-        peliculas.forEach(peli => {
+        peliculas.forEach((peli,index) => {
         tablaPelis += `
-           <tr>
+           <tr class="filaContenido">
              <td>${peli.titulo}</td>
              <td>${peli.year}</td>
+             <td>${peli.descripcion}</td>
              <td><img src ="${peli.url}" alt="${peli.titulo}"></td> 
              <td>${peli.genero} </td>
+             <td><button class="botonEliminar" data-index="${index}">Eliminar</button></td>
+             <td><button class="botonEditar" >Editar</button></td>
            </tr>
           `;
           });
         tablaPelis += `</tbody> </table>`; //aqui añadimos a tablaPeli las etiquetas de cierre de esa tabla
-        tabla.innerHTML = tablaPelis  //añadimos a la sección del html, esta tablaPelis que acabamos de crear
-}//cerramos la función actualizar tabla
+        tabla.innerHTML = tablaPelis    //añadimos a la sección del html, esta tablaPelis que acabamos de crear
+
+      ////BOTON ELIMINAR////
+        const botonEliminar= document.querySelectorAll(".botonEliminar");
+        botonEliminar.forEach(boton=>{
+          boton.addEventListener("click",function(){
+           const index = this.dataset.index; // obtenemos el index del atributo data-index
+           peliculas.splice(index, 1);       // eliminamos la película del array
+           actualizarTabla();
+          })
+        })
+
+
+
+       ////BOTON ELIMINAR////
+        const botonEditar= document.querySelector(".botonEditar");
+        botonEditar.addEventListener("click",function(){ 
+           const fila = document.querySelector(".filaContenido")
+           fila.innerHTML =`
+           <td>
+             <form class="edit-form">
+             <label>Título: <input type="text" name="titulo" value="${peli.titulo}" required></label>
+             <label>Año: <input type="number" name="year" value="${peli.year}" required></label>
+             <label>Descripción: <input type="text" name="descripcion" value="${peli.descripcion}" required></label>
+             <button type="submit">Guardar</button>
+             </form>
+           </td>
+          `;
+          const formEdit = fila.querySelector(".edit-form");
+          formEdit.addEventListener("submit", (event) =>{
+          event.preventDefault();
+          peli.titulo = formEdit.elements.titulo.value.trim();
+          peli.year = parseInt (formEdit.elements.titulo.value.trim()); //parseint - convierte un string en un num entero
+          peli.descripcion = formEdit.elements.descripcion.value.trim();
+          actualizarTabla(); // refrescamos la tabla con los cambios
+          });
+
+
+
+          })
+        }
+//cerramos la función actualizar tabla
+actualizarTabla();
+
+
+///////////FILTRO TÍTULO///////
+function filterBytitulo(titulo) {
+    for (let i = 0; i < peliculas.length; i++) {
+        if (peliculas[i].titulo === titulo) {
+            return peliculas[i];
+        }
+    }
+    return null; // Si no se encuentra el estudiante
+}
+
+document.getElementById("titulo-filter").addEventListener("input", function() {
+    const filtro = this.value.trim();
+    actualizarTabla(filtro); // Actualiza la tabla mostrando solo las pelis que coincidan
+});
+const peliculasFiltradas = peliculas.filter(peli => 
+    peli.titulo.toLowerCase().includes(filtro.toLowerCase())
+);
+
+
+
+
+
    
