@@ -9,11 +9,20 @@
 </head>
 <body>
   <header>
-     <h1>BIENVENIDO A MI WEB DE PELIS!!</h1>
+     <a class="logo" href="#">PeliLu ✶</a>
+      <nav> 
+        <a href="#nuevaPeli">AÑADIR</a>
+        <a href="#filtros">BUSCAR</a>
+        <a href="#tabla">PELIÍCULAS</a>
+      </nav>
   </header>
   <main>
+     <section class="masthead">
+        <h1>UN "CLICK" Y EMPIEZA LA MAGIA</h1>
+        <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1740" alt="foto inicio">
+     </section>
      <section id="nuevaPeli">
-         <h2>¿Cuál es tu peli favorita?</h2>
+         <h2>AÑADE TU PELICULA FAVORITA</h2>
          <form id="formPeli">
            <label for ="titulo">Título:</label>   
            <input type="text" id="titulo" required>
@@ -40,23 +49,27 @@
            <button type="submit">Añade tu peli</button>
          </form>
      </section>
-     <section id="filtroTitulo">
-         <input type="text" id="buscador" placeholder="Buscar por título">
-         <button id="botonBuscar">Buscar</button>
-         <div id="peliculasEcontradas"></div>
+     <section id ="filtros">
+         <article id="contenedorFiltros">
+            <div>
+            <input type="text" id="buscador" placeholder="Buscar por título">
+            <button id="botonBuscar">Buscar</button>
+            </div>
+
+            <div>
+            <label for="genero-filter">Selecciona el género:</label>
+                  <select id="genero-filter">
+                     <option value="all">All</option>
+                     <option value="accion">Acción</option>
+                     <option value="comedia">Comedia</option>
+                     <option value="drama">Drama</option>
+                     <option value="terror">Terror</option>
+                     <option value="fantasia">Fantasía</option>
+                  </select>
+            </div>
+         </article> 
     </section>
-    <section id="filtroGenero">
-       <label for="genero-filter">Selecciona el género:</label>
-            <select id="genero-filter">
-                <option value="all">All</option>
-                <option value="accion">Acción</option>
-                <option value="comedia">Comedia</option>
-                <option value="drama">Drama</option>
-                <option value="terror">Terror</option>
-                <option value="fantasia">Fantasía</option>
-            </select>
-    </section>
-     <section id ="tabla"></section>
+    <section id ="tabla"></section>
   </main>
 <script  type="module"  src="./js/script.js"></script>
 </body>
