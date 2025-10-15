@@ -40,18 +40,22 @@
            <button type="submit">Añade tu peli</button>
          </form>
      </section>
-      <section id="filtro">
-            <h2>Filtro por título de la peli</h2>
-            <div>
-                <label for="titulo-filter">Titulo:</label>
-                <input type="text" id="titulo-filter" placeholder="Buscamos tu peli" required>
-                <button id="titulo-search-button">Search</button>
-                <button id="titulo-clear-button">Clear</button>
-            </div>
-            <section id="filtered-peli">
-                <!-- Filtered peli will be displayed here -->
-            </section>
-        </section>
+     <section id="filtroTitulo">
+         <input type="text" id="buscador" placeholder="Buscar por título">
+         <button id="botonBuscar">Buscar</button>
+         <div id="peliculasEcontradas"></div>
+    </section>
+    <section id="filtroGenero">
+       <label for="genero-filter">Selecciona el género:</label>
+            <select id="genero-filter">
+                <option value="all">All</option>
+                <option value="accion">Acción</option>
+                <option value="comedia">Comedia</option>
+                <option value="drama">Drama</option>
+                <option value="terror">Terror</option>
+                <option value="fantasia">Fantasía</option>
+            </select>
+    </section>
      <section id ="tabla"></section>
   </main>
 <script  type="module"  src="./js/script.js"></script>
