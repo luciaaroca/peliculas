@@ -222,6 +222,14 @@ nav a:hover{
   border-radius: 10px;
   border: 5px solid var(--color-red);
 }
+#formPeli textarea,
+#formPeli option,
+#formPeli input{
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight:var(--font-light);
+  font-style: normal;
+}
 
 
 /*FILTROS*/
@@ -244,6 +252,9 @@ nav a:hover{
   margin-top: 10px;
   padding: 5px 15px;     
   font-size: 15px;  
+}
+#genero-filter {
+  margin-top: 8px;
 }
 /*TABLA*/
 
@@ -268,7 +279,7 @@ nav a:hover{
 
 
 #tablaPelis tbody tr:hover {
-  background-color: #c3b2b2;
+  background-color: #eae8e8;
 }
 .titulosNegrita{
 	font-weight: var(--font-normalPlus);
@@ -285,3 +296,17 @@ nav a:hover{
 .imgTabla{
 	width: 100px;
 }
+
+/*FORMULARIO BOTÓN DE EDITAR*/
+.editarPeli label input,
+.editarPeli label textarea{
+margin-bottom: 5px;
+margin-top: 5px;
+
+font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight:var(--font-normal);
+  font-style: normal;
+
+}
+

@@ -128,12 +128,47 @@ function actualizarTabla(peliData, peliGenero){
         const botonEliminar= document.querySelectorAll(".botonEliminar"); //añadido apartado anterior
         botonEliminar.forEach(boton=>{
           boton.addEventListener("click",function(){ 
-           const index = this.dataset.index; // obtenemos el index del atributo data-index
+           const index = this.dataset.index; // obtenemos el index() del atributo dataset
            peliculas.splice(index, 1);       // eliminamos la película del array
            actualizarTabla(); //llamamos a la función actualizar tabla
           })
         })
+
+
         //5) BOTÓN DE EDITAR
+        
+        const botonEditar =document.querySelectorAll(".botonEditar");
+        botonEditar.forEach((boton ,index )=>{
+          boton.addEventListener("click", function(){
+              const peli = peliculas[index];
+              const fila = boton.closest("tr");
+              fila.innerHTML = `
+                  <td colspan="7">
+                    <form class="editarPeli">
+                      <label>Título: <input type="text" name="titulo" value="${peli.titulo}" required></label>
+                      <label>Año: <input type="number" name="year" value="${peli.year}" required></label>
+                      <label>Descripción: <textarea name="descripcion" required>${peli.descripcion}</textarea></label>
+                      <label>Imagen: <input type="url" name="url" value="${peli.url}" required></label>
+                      <label>Género: <input type="text" name="genero" value="${peli.genero}" required></label>
+                      <button type="submit">Guardar</button>
+                    </form>
+                  </td>
+                `;
+              const editarPeli = fila.querySelector(".editarPeli");
+              editarPeli.addEventListener("submit", (evento) => {
+                evento.preventDefault();
+
+                peli.titulo = editarPeli.elements.titulo.value.trim();
+                peli.year = parseInt(editarPeli.elements.year.value.trim());
+                peli.descripcion = editarPeli.elements.descripcion.value.trim();
+                peli.url = editarPeli.elements.url.value.trim();
+                peli.genero = editarPeli.elements.genero.value.trim();
+
+              actualizarTabla();
+          })
+         });
+        });
+      
 }//cerramos la función actualizar tabla
 
 actualizarTabla(); //la llamamos para que nada más cargar la página nos salgan todas las pelis
@@ -161,31 +196,3 @@ document.getElementById("genero-filter").addEventListener("change", function(eve
 
 
 
-   
-//  ////BOTON EDITAR////
-      //   const botonEditar= document.querySelector(".botonEditar");
-      //   botonEditar.addEventListener("click",function(){ 
-      //      const fila = document.querySelector(".filaContenido")
-      //      //lo siguiente no hace falta
-      //      fila.innerHTML =`
-      //      <td>
-      //        <form class="edit-form">
-      //        <label>Título: <input type="text" name="titulo" value="${peli.titulo}" required></label>
-      //        <label>Año: <input type="number" name="year" value="${peli.year}" required></label>
-      //        <label>Descripción: <input type="text" name="descripcion" value="${peli.descripcion}" required></label>
-      //        <button type="submit">Guardar</button>
-      //        </form>
-      //      </td>
-      //     `;
-      //     const formEdit = fila.querySelector(".edit-form");
-      //     formEdit.addEventListener("submit", (event) =>{
-      //     event.preventDefault();
-      //     peli.titulo = formEdit.elements.titulo.value.trim();
-      //     peli.year = parseInt (formEdit.elements.titulo.value.trim()); //parseint - convierte un string en un num entero
-      //     peli.descripcion = formEdit.elements.descripcion.value.trim();
-      //     actualizarTabla(); // refrescamos la tabla con los cambios
-      //     });
-
-
-
-      //     })
