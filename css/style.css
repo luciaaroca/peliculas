@@ -62,8 +62,8 @@ table {
 }
 
 
-/*MI CSS*/
-/*general*/
+/********************MI CSS**************************************/
+/**********GENERAL*********/
 body{
   min-height: 100dvh;
   font-family: "Montserrat", sans-serif;
@@ -76,7 +76,7 @@ body{
 main{
     width: 100%;
     flex-grow:1; 
-	margin-top: 74px;
+	  margin-top: 74px;
 }
 section{
    
@@ -130,7 +130,7 @@ select {
 }
 
 
-/*header*/
+/**********HEADER*********/
 header{
 	background-color: var(--color-black);
 	padding: 20px;
@@ -163,7 +163,7 @@ nav a:hover{
 }
 
 
-/*masthead*/
+/**********MASTHEAD*********/
 .masthead{
 	
 	position: relative;
@@ -176,7 +176,7 @@ nav a:hover{
     font-size: 50px;
     text-align: center;
 	overflow: hidden;
-	background-color: aqua;
+	
 
 	 
 }
@@ -199,7 +199,7 @@ nav a:hover{
 }
 
 
-/*seccion-nuevapeli/formulario*/
+/**********SECCIOÓN NUEVAPELI Y FORMULARIO*********/
 #nuevaPeli {
   
   margin-top: 20px;
@@ -232,7 +232,7 @@ nav a:hover{
 }
 
 
-/*FILTROS*/
+/**********FILTROS*********/
 
 #filtros{
 	display: flex;
@@ -256,10 +256,24 @@ nav a:hover{
 #genero-filter {
   margin-top: 8px;
 }
-/*TABLA*/
+/**********TABLA*********/
+#tabla{
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
 
-#tablaPelis{
+ overflow-x: auto; /* Permite scroll horizontal si es necesario */
+ width: 100%;
+}
+
+#tablaPelis{ 
+  margin: 0 auto;
 	width: 100%;
+  
+  max-width: 1400px;
+  min-width: 600px; 
+
 }
 
 #tablaPelis thead {
@@ -270,7 +284,7 @@ nav a:hover{
 #tablaPelis th, 
 #tablaPelis td {
   padding: 12px 15px;
-  text-align: left;
+  /* text-align: left; */
   border-bottom: 1px solid #ddd;
 }
 #tablaPelis tbody tr {
@@ -297,7 +311,7 @@ nav a:hover{
 	width: 100px;
 }
 
-/*FORMULARIO BOTÓN DE EDITAR*/
+/*********FORMULARIO BOTÓN DE EDITAR*********/
 .editarPeli label input,
 .editarPeli label textarea{
 margin-bottom: 5px;
@@ -310,3 +324,11 @@ font-family: "Montserrat", sans-serif;
 
 }
 
+/*********MEDIA QUERY*********/
+
+@media (max-width:850px){
+  
+  #tablaPelis{
+   max-width: 700px;
+  }
+}
