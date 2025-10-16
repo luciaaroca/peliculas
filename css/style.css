@@ -66,10 +66,12 @@ table {
 /**********GENERAL*********/
 body{
   min-height: 100dvh;
+
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
   font-weight:var(--font-normal);
   font-style: normal;
+  font-size: 16px;
   background-color: var(--color-black);
 }
 
@@ -77,12 +79,17 @@ main{
     width: 100%;
     flex-grow:1; 
 	  margin-top: 74px;
+
+    /* display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; */
 }
 section{
    
    padding: 20px;
    min-width: 500px;
-   border-bottom: 3px solid rgb(15, 14, 14);
+  
 }
 h1{
 	font-size: 50px;
@@ -206,6 +213,7 @@ nav a:hover{
   display: flex;
   flex-direction: column;
   align-items: center; /* centra el contenido horizontalmente */
+  justify-content: center;
   background-color: var(--color-black);
 }
 
@@ -263,8 +271,8 @@ nav a:hover{
  justify-content: center;
  align-items: center;
 
- overflow-x: auto; /* Permite scroll horizontal si es necesario */
- width: 100%;
+/* overflow-x: auto; /* Permite scroll horizontal si es necesario */
+ 
 }
 
 #tablaPelis{ 
@@ -284,11 +292,13 @@ nav a:hover{
 #tablaPelis th, 
 #tablaPelis td {
   padding: 12px 15px;
-  /* text-align: left; */
+  /* text-align: center;  */
+  vertical-align: middle;
   border-bottom: 1px solid #ddd;
 }
 #tablaPelis tbody tr {
   background-color: white;
+
 }
 
 
@@ -325,10 +335,53 @@ font-family: "Montserrat", sans-serif;
 }
 
 /*********MEDIA QUERY*********/
+@media (max-width: 768px) {  /*MÓVIL ESTÁNDAR*/
+  header {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   gap: 20px;
+   
+  }
+  h1{
+	font-size: 30px;
+}
+h2{
+	font-size: 20px;
+}
+.masthead{
+  
+  max-height:400px ;
+}
+.masthead img{
+ height: 400px;
+}
+.masthead h1{
+  margin-top: -90px;
+}
+#nuevaPeli{
+  margin-top: 0;
+}
+#formPeli{
+  max-width: 400px;
+}
+#tabla{
+overflow-x: auto; 
+}
+/* #tablaPelis{ 
+ 
+  width:500px ;
+  
 
+} */
+
+}
+
+/* 
 @media (max-width:850px){
   
   #tablaPelis{
    max-width: 700px;
   }
-}
+} */
